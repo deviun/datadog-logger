@@ -1,5 +1,8 @@
 # CHANGE LOG
 
+## v1.0
+- **1.0.0**
+    - Stable release
 ## v0.0
 - **0.0.3**
     - Fix default tags
