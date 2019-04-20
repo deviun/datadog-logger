@@ -1,4 +1,4 @@
-# Datadog Logger (alpha)
+# Datadog Logger (beta)
 [![datadog-logger](https://img.shields.io/npm/v/datadog-logger.svg?style=flat-square)](https://www.npmjs.com/package/datadog-logger/)
 
 You've small project and wanna logging to cloud service, but do not wanna install graylog or another logging agent?
@@ -14,7 +14,7 @@ npm i datadog-logger
 ## Create logger
 
 ```javascript
-import { DatadogLogger } from 'datadog-loggrer';
+import { DatadogLogger } from 'datadog-logger';
 
 const log = new DatadogLogger({
   logLevel: 'info',
@@ -24,7 +24,7 @@ const log = new DatadogLogger({
   hostname: 'service-host',
   tags: {
     platform: 'node',
-    language: 'typescript',stdoutOnly
+    language: 'typescript',
   },
 });
 ```
