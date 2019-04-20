@@ -25,7 +25,7 @@ const levelInt = {
 const DEFAULT_LOG_LEVEL = 'info';
 const DEFAULT_HOST = 'localhost';
 const DEFAULT_SOURCE = 'nodejs-script';
-const DEFAULT_TAGS = [];
+const DEFAULT_TAGS = {};
 
 export class DatadogLogger {
   apiTransport: ApiTransport;
