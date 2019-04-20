@@ -50,7 +50,7 @@ var levelInt = {
 var DEFAULT_LOG_LEVEL = 'info';
 var DEFAULT_HOST = 'localhost';
 var DEFAULT_SOURCE = 'nodejs-script';
-var DEFAULT_TAGS = [];
+var DEFAULT_TAGS = {};
 var DatadogLogger = /** @class */ (function () {
     function DatadogLogger(_a) {
         var apiKey = _a.apiKey, _b = _a.logLevel, logLevel = _b === void 0 ? DEFAULT_LOG_LEVEL : _b, _c = _a.source, source = _c === void 0 ? DEFAULT_SOURCE : _c, _d = _a.hostname, hostname = _d === void 0 ? DEFAULT_HOST : _d, _e = _a.tags, tags = _e === void 0 ? DEFAULT_TAGS : _e, _f = _a.allowStdout, allowStdout = _f === void 0 ? false : _f, _g = _a.stdoutOnly, stdoutOnly = _g === void 0 ? false : _g;
