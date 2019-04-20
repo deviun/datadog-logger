@@ -4,6 +4,12 @@ const log = new DatadogLogger({
   logLevel: 'info',
   apiKey: process.env.API_KEY,
   allowStdout: true,
+  source: 'example',
+  hostname: 'macbook',
+  tags: {
+    platform: 'node',
+    language: 'typescript',
+  },
 });
 
 log.info('Test info');
