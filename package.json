@@ -1,0 +1,24 @@
+{
+  "name": "datadog-logger",
+  "version": "0.0.1",
+  "description": "Datadog logger",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deviun/datadog-logger.git"
+  },
+  "keywords": [
+    "logger",
+    "datadog",
+    "log"
+  ],
+  "author": "Anton Danilov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/deviun/datadog-logger/issues"
+  },
+  "homepage": "https://github.com/deviun/datadog-logger#readme"
+}
