@@ -46,7 +46,7 @@ log.debug('2 + 2 =', 2 + 2);
 
 | Name        | Type | Required | Default  |
 | ------------- | ------------- | :-------------:| -----:|
-| apiKey      | string | No | null |
+| apiKey      | string | Yes | null |
 | logLevel       | string | No  |  'info' |
 | source |  string | No  |  'nodejs-script' |
 | hostname |  string | No  |  'localhost' |
