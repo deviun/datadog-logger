@@ -4,6 +4,7 @@ import { stdout } from './stdout';
 interface DatadogLoggerConstructorT {
   apiKey: string;
   logLevel?: string;
+  service?: string;
   source?: string;
   hostname?: string;
   tags?: any;
@@ -24,12 +25,14 @@ const levelInt = {
 
 const DEFAULT_LOG_LEVEL = 'info';
 const DEFAULT_HOST = 'localhost';
+const DEFAULT_SERVICE = 'nodejs-project';
 const DEFAULT_SOURCE = 'nodejs-script';
 const DEFAULT_TAGS = {};
 
 export class DatadogLogger {
   apiTransport: ApiTransport;
   level: string;
+  service: string;
   source: string;
   hostname: string;
   tags: string;
@@ -39,6 +42,7 @@ export class DatadogLogger {
   constructor({
     apiKey,
     logLevel = DEFAULT_LOG_LEVEL,
+    service = DEFAULT_SERVICE,
     source = DEFAULT_SOURCE,
     hostname = DEFAULT_HOST,
     tags = DEFAULT_TAGS,
@@ -51,6 +55,7 @@ export class DatadogLogger {
 
     this.level = logLevel;
     this.source = source;
+    this.service = service;
     this.hostname = hostname;
     this.tags = tags;
     this.allowStdout = allowStdout;
@@ -62,6 +67,7 @@ export class DatadogLogger {
   async log(fromLevel: string, ...args: any) {
     const {
       level,
+      service,
       source,
       hostname,
       tags,
@@ -88,6 +94,7 @@ export class DatadogLogger {
 
     return this.apiTransport.send({
       level: fromLevel,
+      service,
       source,
       hostname,
       tags: DatadogLogger.tagsToExternal(tags),

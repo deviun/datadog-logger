@@ -20,7 +20,8 @@ const log = new DatadogLogger({
   logLevel: 'info',
   apiKey: process.env.DATADOG_API_KEY,
   allowStdout: true,
-  source: 'service-name',
+  service: 'service-name',
+  source: 'script-name',
   hostname: 'service-host',
   tags: {
     platform: 'node',
@@ -48,6 +49,7 @@ log.debug('2 + 2 =', 2 + 2);
 | ------------- | ------------- | :-------------:| -----:|
 | apiKey      | string | Yes | null |
 | logLevel       | string | No  |  'info' |
+| service |  string | No  |  'nodejs-project' |
 | source |  string | No  |  'nodejs-script' |
 | hostname |  string | No  |  'localhost' |
 | allowStdout |  boolean | No  |  false |

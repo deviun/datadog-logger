@@ -7,6 +7,7 @@ const BASE_PATH = 'v1/input';
 
 interface sendT {
   level: string;
+  service: string;
   source: string;
   hostname: string;
   tags: string;
@@ -45,6 +46,7 @@ export class ApiTransport {
 
   async send({
     level,
+    service,
     source,
     hostname,
     tags,
@@ -55,6 +57,7 @@ export class ApiTransport {
       `${BASE_PATH}/${this.apiKey}`, {
         ddsource: source,
         ddtags: tags,
+        service,
         hostname,
         level,
         message,

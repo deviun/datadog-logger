@@ -4,6 +4,7 @@ const log = new DatadogLogger({
   logLevel: 'info',
   apiKey: process.env.API_KEY,
   allowStdout: true,
+  service: 'datadog-demo',
   source: 'example',
   hostname: 'macbook',
   tags: {
