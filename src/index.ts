@@ -105,23 +105,23 @@ export class DatadogLogger {
   async error(...args: any) {
     return this.log('error', ...args);
   }
-  
+
   async info(...args: any) {
     return this.log('info', ...args);
   }
-  
+
   async debug(...args: any) {
     return this.log('debug', ...args);
   }
-  
+
   async warn(...args: any) {
     return this.log('warn', ...args);
   }
-  
+
   async fatal(...args: any) {
     return this.log('fatal', ...args);
   }
-  
+
   async trace(...args: any) {
     return this.log('trace', ...args);
   }
