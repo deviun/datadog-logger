@@ -49,16 +49,18 @@ var levelInt = {
 };
 var DEFAULT_LOG_LEVEL = 'info';
 var DEFAULT_HOST = 'localhost';
+var DEFAULT_SERVICE = 'nodejs-project';
 var DEFAULT_SOURCE = 'nodejs-script';
 var DEFAULT_TAGS = {};
 var DatadogLogger = /** @class */ (function () {
     function DatadogLogger(_a) {
-        var apiKey = _a.apiKey, _b = _a.logLevel, logLevel = _b === void 0 ? DEFAULT_LOG_LEVEL : _b, _c = _a.source, source = _c === void 0 ? DEFAULT_SOURCE : _c, _d = _a.hostname, hostname = _d === void 0 ? DEFAULT_HOST : _d, _e = _a.tags, tags = _e === void 0 ? DEFAULT_TAGS : _e, _f = _a.allowStdout, allowStdout = _f === void 0 ? false : _f, _g = _a.stdoutOnly, stdoutOnly = _g === void 0 ? false : _g;
+        var apiKey = _a.apiKey, _b = _a.logLevel, logLevel = _b === void 0 ? DEFAULT_LOG_LEVEL : _b, _c = _a.service, service = _c === void 0 ? DEFAULT_SERVICE : _c, _d = _a.source, source = _d === void 0 ? DEFAULT_SOURCE : _d, _e = _a.hostname, hostname = _e === void 0 ? DEFAULT_HOST : _e, _f = _a.tags, tags = _f === void 0 ? DEFAULT_TAGS : _f, _g = _a.allowStdout, allowStdout = _g === void 0 ? false : _g, _h = _a.stdoutOnly, stdoutOnly = _h === void 0 ? false : _h;
         if (!apiKey) {
             throw new Error('Datadog api key not found');
         }
         this.level = logLevel;
         this.source = source;
+        this.service = service;
         this.hostname = hostname;
         this.tags = tags;
         this.allowStdout = allowStdout;
@@ -71,9 +73,9 @@ var DatadogLogger = /** @class */ (function () {
             args[_i - 1] = arguments[_i];
         }
         return __awaiter(this, void 0, void 0, function () {
-            var _a, level, source, hostname, tags, message;
+            var _a, level, service, source, hostname, tags, message;
             return __generator(this, function (_b) {
-                _a = this, level = _a.level, source = _a.source, hostname = _a.hostname, tags = _a.tags;
+                _a = this, level = _a.level, service = _a.service, source = _a.source, hostname = _a.hostname, tags = _a.tags;
                 if (!DatadogLogger.allowLevelLogging(fromLevel, level)) {
                     return [2 /*return*/];
                 }
@@ -90,6 +92,7 @@ var DatadogLogger = /** @class */ (function () {
                 }
                 return [2 /*return*/, this.apiTransport.send({
                         level: fromLevel,
+                        service: service,
                         source: source,
                         hostname: hostname,
                         tags: DatadogLogger.tagsToExternal(tags),

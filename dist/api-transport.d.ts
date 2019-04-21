@@ -1,5 +1,6 @@
 interface sendT {
     level: string;
+    service: string;
     source: string;
     hostname: string;
     tags: string;
@@ -9,6 +10,6 @@ export declare class ApiTransport {
     apiKey: string;
     constructor(apiKey: string);
     request(hostname: string, path: string, data: any): Promise<{}>;
-    send({ level, source, hostname, tags, message, }: sendT): Promise<{}>;
+    send({ level, service, source, hostname, tags, message, }: sendT): Promise<{}>;
 }
 export {};

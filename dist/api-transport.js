@@ -65,12 +65,13 @@ var ApiTransport = /** @class */ (function () {
         });
     };
     ApiTransport.prototype.send = function (_a) {
-        var level = _a.level, source = _a.source, hostname = _a.hostname, tags = _a.tags, message = _a.message;
+        var level = _a.level, service = _a.service, source = _a.source, hostname = _a.hostname, tags = _a.tags, message = _a.message;
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_b) {
                 return [2 /*return*/, this.request(API_HOST, BASE_PATH + "/" + this.apiKey, {
                         ddsource: source,
                         ddtags: tags,
+                        service: service,
                         hostname: hostname,
                         level: level,
                         message: message,

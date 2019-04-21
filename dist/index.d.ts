@@ -2,6 +2,7 @@ import { ApiTransport } from './api-transport';
 interface DatadogLoggerConstructorT {
     apiKey: string;
     logLevel?: string;
+    service?: string;
     source?: string;
     hostname?: string;
     tags?: any;
@@ -11,12 +12,13 @@ interface DatadogLoggerConstructorT {
 export declare class DatadogLogger {
     apiTransport: ApiTransport;
     level: string;
+    service: string;
     source: string;
     hostname: string;
     tags: string;
     allowStdout: boolean;
     stdoutOnly: boolean;
-    constructor({ apiKey, logLevel, source, hostname, tags, allowStdout, stdoutOnly, }: DatadogLoggerConstructorT);
+    constructor({ apiKey, logLevel, service, source, hostname, tags, allowStdout, stdoutOnly, }: DatadogLoggerConstructorT);
     log(fromLevel: string, ...args: any): Promise<{}>;
     error(...args: any): Promise<{}>;
     info(...args: any): Promise<{}>;
