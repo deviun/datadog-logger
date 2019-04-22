@@ -16,4 +16,4 @@ const log = new DatadogLogger({
 log.info('Test info');
 log.error('Test Error', new Error('EEEEERRRROOORR'));
 log.fatal('fatal!!!');
-log.debug('your are here');
+log.debug('you are here');

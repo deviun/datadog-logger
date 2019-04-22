@@ -51,6 +51,7 @@ log.debug('2 + 2 =', 2 + 2);
 | logLevel       | string | No  |  'info' |
 | service |  string | No  |  'nodejs-project' |
 | source |  string | No  |  'nodejs-script' |
+| tags |  object | No  |  {} |
 | hostname |  string | No  |  'localhost' |
 | allowStdout |  boolean | No  |  false |
 | stdoutOnly |  boolean | No  |  false |
