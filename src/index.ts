@@ -84,7 +84,7 @@ export class DatadogLogger {
     }
 
     if (this.allowStdout) {
-      stdout(new Date(), fromLevel, message);
+      setImmediate(() => stdout(new Date(), fromLevel, message));
     }
 
     if (this.stdoutOnly) {

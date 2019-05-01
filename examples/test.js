@@ -1,7 +1,7 @@
 const { DatadogLogger } = require('../dist/index');
 
 const log = new DatadogLogger({
-  logLevel: 'info',
+  logLevel: 'all',
   apiKey: process.env.API_KEY,
   allowStdout: true,
   service: 'datadog-demo',
@@ -16,4 +16,6 @@ const log = new DatadogLogger({
 log.info('Test info');
 log.error('Test Error', new Error('EEEEERRRROOORR'));
 log.fatal('fatal!!!');
-log.debug('you are here');
+log.debug('you are here', {
+  anyObject: true,
+});

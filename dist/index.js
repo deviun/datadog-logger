@@ -84,7 +84,7 @@ var DatadogLogger = /** @class */ (function () {
                     return [2 /*return*/];
                 }
                 if (this.allowStdout) {
-                    stdout_1.stdout(new Date(), fromLevel, message);
+                    setImmediate(function () { return stdout_1.stdout(new Date(), fromLevel, message); });
                 }
                 if (this.stdoutOnly) {
                     // prevent sending to datadog
