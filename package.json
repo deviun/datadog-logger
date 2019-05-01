@@ -23,8 +23,6 @@
   },
   "homepage": "https://github.com/deviun/datadog-logger#readme",
   "dependencies": {
-    "@types/node": "11.13.6",
-    "@types/request": "2.48.1",
-    "request": "2.88.0"
+    "@types/node": "11.13.6"
   }
 }
