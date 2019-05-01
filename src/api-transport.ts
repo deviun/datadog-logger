@@ -1,9 +1,10 @@
-import * as request from 'request';
+import * as https from 'https';
 
-const API_METHOD = 'POST';
-const API_PROTO = 'https://';
+const REQUEST_METHOD = 'POST';
 const API_HOST = 'http-intake.logs.datadoghq.com';
-const BASE_PATH = 'v1/input';
+const BASE_PATH = '/v1/input';
+const HTTPS_PORT = 443;
+const OK_CODE = 200;
 
 interface sendT {
   level: string;
@@ -21,26 +22,32 @@ export class ApiTransport {
     this.apiKey = apiKey;
   }
 
-  request(hostname: string, path: string, data: any) {
+  request(hostname: string, path: string, data: any): Promise<any> {
     const options = {
-      method: API_METHOD,
-      url: [API_PROTO, hostname, '/', path].join(''),
+      method: REQUEST_METHOD,
+      hostname,
+      path,
+      port: HTTPS_PORT,
       headers: {
         'cache-control': 'no-cache',
         'Content-Type': 'application/json',
       },
-      body: data,
-      json: true,
     };
+    const stringData = JSON.stringify(data);
 
     return new Promise((resolve, reject) => {
-      request(options, (error, response, body) => {
-        if (error) {
-          return reject(error);
+      const req = https.request(options, (res) => {
+        if (res.statusCode !== OK_CODE) {
+          console.log('unexpected status code', res.statusCode);
+          return reject(res);
         }
 
-        return resolve(body);
+        return resolve(res);
       });
+
+      req.on('error', reject);
+      req.write(stringData);
+      req.end();
     });
   }
 
