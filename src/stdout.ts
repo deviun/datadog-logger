@@ -20,9 +20,9 @@ const formattingOutput = (msg: any, arrFormat = true): string[] => {
 };  
 
 export const stdout = (...args: any) => {
-  args.forEach((arg: any) => {
+  args.forEach((arg: any) => 
     formattingOutput(arg)
-      .forEach(out => process.stdout.write(out));
-  });
+      .forEach(out => process.stdout.write(out)),
+  );
   process.stdout.write('\n');
 };
