@@ -28,7 +28,7 @@ exports.stdout = function () {
         args[_i] = arguments[_i];
     }
     args.forEach(function (arg) {
-        formattingOutput(arg)
+        return formattingOutput(arg)
             .forEach(function (out) { return process.stdout.write(out); });
     });
     process.stdout.write('\n');
