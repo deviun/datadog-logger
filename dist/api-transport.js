@@ -35,33 +35,39 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var request = require("request");
-var API_METHOD = 'POST';
-var API_PROTO = 'https://';
+var https = require("https");
+var REQUEST_METHOD = 'POST';
 var API_HOST = 'http-intake.logs.datadoghq.com';
-var BASE_PATH = 'v1/input';
+var BASE_PATH = '/v1/input';
+var HTTPS_PORT = 443;
+var OK_CODE = 200;
 var ApiTransport = /** @class */ (function () {
     function ApiTransport(apiKey) {
         this.apiKey = apiKey;
     }
     ApiTransport.prototype.request = function (hostname, path, data) {
         var options = {
-            method: API_METHOD,
-            url: [API_PROTO, hostname, '/', path].join(''),
+            method: REQUEST_METHOD,
+            hostname: hostname,
+            path: path,
+            port: HTTPS_PORT,
             headers: {
                 'cache-control': 'no-cache',
                 'Content-Type': 'application/json',
             },
-            body: data,
-            json: true,
         };
+        var stringData = JSON.stringify(data);
         return new Promise(function (resolve, reject) {
-            request(options, function (error, response, body) {
-                if (error) {
-                    return reject(error);
+            var req = https.request(options, function (res) {
+                if (res.statusCode !== OK_CODE) {
+                    console.log('unexpected status code', res.statusCode);
+                    return reject(res);
                 }
-                return resolve(body);
+                return resolve(res);
             });
+            req.on('error', reject);
+            req.write(stringData);
+            req.end();
         });
     };
     ApiTransport.prototype.send = function (_a) {
